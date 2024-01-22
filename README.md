@@ -15,6 +15,16 @@
    ```
 6. ROS launch file starten
 
+## Remote Connection
+
+Verbindung aufsetzen wie [hier](http://wiki.ros.org/turtlebot/Tutorials/indigo/Network%20Configuration) beschrieben.
+
+Im `~/.bashrc` folgendes ergänzen:
+```BASH
+export ROS_MASTER_URI=http://IP_OF_TURTLEBOT:11311
+export ROS_HOSTNAME=IP_OF_PC    # IP von ifconfig
+```
+
 ## Benutzerdaten
 username: ubuntu
 password: MR-Robots
