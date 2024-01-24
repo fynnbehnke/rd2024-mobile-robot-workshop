@@ -49,28 +49,28 @@ int main(int argc, char** argv){
     border.id = 5;
     border.type = visualization_msgs::Marker::LINE_STRIP;
     
-    border_point.x = BORDER_X;
-    border_point.y = BORDER_Y;
+    border_point.x = BORDER_X-LINE_X;
+    border_point.y = BORDER_Y-LINE_Y;
     border_point.z = 0;   
     border.points.push_back(border_point);
 
-    border_point.x =  BORDER_X;
-    border_point.y =  BORDER_Y-BORDER_WIDTH;
+    border_point.x =  BORDER_X-LINE_X;
+    border_point.y =  BORDER_Y-BORDER_WIDTH-LINE_Y;
     border_point.z = 0;   
     border.points.push_back(border_point);
 
-    border_point.x = BORDER_X+BORDER_LENGTH;
-    border_point.y = BORDER_Y-BORDER_WIDTH;
+    border_point.x = BORDER_X+BORDER_LENGTH-LINE_X;
+    border_point.y = BORDER_Y-BORDER_WIDTH-LINE_Y;
     border_point.z = 0;   
     border.points.push_back(border_point);
 
-    border_point.x = BORDER_X+BORDER_LENGTH;
-    border_point.y = BORDER_Y;
+    border_point.x = BORDER_X+BORDER_LENGTH-LINE_X;
+    border_point.y = BORDER_Y-LINE_Y;
     border_point.z = 0;   
     border.points.push_back(border_point);
 
-    border_point.x = BORDER_X;
-    border_point.y = BORDER_Y;
+    border_point.x = BORDER_X-LINE_X;
+    border_point.y = BORDER_Y-LINE_Y;
     border_point.z = 0;   
     border.points.push_back(border_point);
     
@@ -84,29 +84,6 @@ int main(int argc, char** argv){
     border.color.b = 0.0;
     border.color.a = 1.0;
 
-
-    // This marks the Roll used for Localization
-    visualization_msgs::Marker cylinder;
-
-    cylinder.header.frame_id = "map";
-    cylinder.id = 0;
-    cylinder.type = visualization_msgs::Marker::CYLINDER;
-    cylinder.pose.position.x = CYLINDER_X;
-    cylinder.pose.position.y = CYLINDER_Y;
-    cylinder.pose.position.z = CYLINDER_HEIGHT / 2;
-    cylinder.pose.orientation.x = 0.0;
-    cylinder.pose.orientation.y = 0.0;
-    cylinder.pose.orientation.z = 0.0;
-    cylinder.pose.orientation.w = 1.0;
-    cylinder.scale.x = CYLINDER_RADIUS * 2;
-    cylinder.scale.y = CYLINDER_RADIUS * 2;
-    cylinder.scale.z = 1.0;
-    cylinder.color.r = 0.0;
-    cylinder.color.g = 0.0;
-    cylinder.color.b = 1.0;
-    cylinder.color.a = 1.0;
-
-
     // This marks the Line to follow
     geometry_msgs::Point line_point;
     visualization_msgs::Marker line;
@@ -115,13 +92,13 @@ int main(int argc, char** argv){
     line.id = 1;
     line.type = visualization_msgs::Marker::LINE_STRIP;
     
-    line_point.x = LINE_X;
-    line_point.y = LINE_Y;
+    line_point.x = LINE_X-LINE_X;
+    line_point.y = LINE_Y-LINE_Y;
     line_point.z = 0;   
     line.points.push_back(line_point);
 
-    line_point.x = LINE_X + LINE_LENGTH;
-    line_point.y = LINE_Y;
+    line_point.x = LINE_X + LINE_LENGTH-LINE_X;
+    line_point.y = LINE_Y-LINE_Y;
     line_point.z = 0;   
     line.points.push_back(line_point);
 
@@ -145,8 +122,8 @@ int main(int argc, char** argv){
     circle.type = visualization_msgs::Marker::LINE_STRIP;
     
     for(int i = 0; i <= 360; i++){
-        circle_point.x = CIRCLE_X + CIRCLE_RADIUS * cos(i * (M_PI/180));
-        circle_point.y = CIRCLE_Y + CIRCLE_RADIUS * sin(i * (M_PI/180));
+        circle_point.x = CIRCLE_X + CIRCLE_RADIUS * cos(i * (M_PI/180))-LINE_X;
+        circle_point.y = CIRCLE_Y + CIRCLE_RADIUS * sin(i * (M_PI/180))-LINE_Y;
         circle_point.z = 0;   
         circle.points.push_back(circle_point);
     }
@@ -170,28 +147,28 @@ int main(int argc, char** argv){
     square.id = 3;
     square.type = visualization_msgs::Marker::LINE_STRIP;
     
-    square_point.x = SQUARE_X;
-    square_point.y = SQUARE_Y;
+    square_point.x = SQUARE_X-LINE_X;
+    square_point.y = SQUARE_Y-LINE_Y;
     square_point.z = 0;   
     square.points.push_back(square_point);
 
-    square_point.x = SQUARE_X;
-    square_point.y = SQUARE_Y - SQUARE_LENGTH;
+    square_point.x = SQUARE_X-LINE_X;
+    square_point.y = SQUARE_Y - SQUARE_LENGTH-LINE_Y;
     square_point.z = 0;   
     square.points.push_back(square_point);
 
-    square_point.x = SQUARE_X + SQUARE_LENGTH;
-    square_point.y = SQUARE_Y - SQUARE_LENGTH;
+    square_point.x = SQUARE_X + SQUARE_LENGTH-LINE_X;
+    square_point.y = SQUARE_Y - SQUARE_LENGTH-LINE_Y;
     square_point.z = 0;   
     square.points.push_back(square_point);
 
-    square_point.x = SQUARE_X + SQUARE_LENGTH;
-    square_point.y = SQUARE_Y;
+    square_point.x = SQUARE_X + SQUARE_LENGTH-LINE_X;
+    square_point.y = SQUARE_Y-LINE_Y;
     square_point.z = 0;   
     square.points.push_back(square_point);
 
-    square_point.x = SQUARE_X;
-    square_point.y = SQUARE_Y;
+    square_point.x = SQUARE_X-LINE_X;
+    square_point.y = SQUARE_Y-LINE_Y;
     square_point.z = 0;   
     square.points.push_back(square_point);
     
@@ -214,23 +191,23 @@ int main(int argc, char** argv){
     triangle.id = 4;
     triangle.type = visualization_msgs::Marker::LINE_STRIP;
     
-    triangle_point.x = TRIANGLE_X;
-    triangle_point.y = TRIANGLE_Y;
+    triangle_point.x = TRIANGLE_X-LINE_X;
+    triangle_point.y = TRIANGLE_Y-LINE_Y;
     triangle_point.z = 0;   
     triangle.points.push_back(triangle_point);
 
-    triangle_point.x = TRIANGLE_X - TRIANGLE_LENGTH_BOT / 2;
-    triangle_point.y = TRIANGLE_Y - TRIANGLE_LENGTH_SIDE;
+    triangle_point.x = TRIANGLE_X - TRIANGLE_LENGTH_BOT / 2-LINE_X;
+    triangle_point.y = TRIANGLE_Y - TRIANGLE_LENGTH_SIDE-LINE_Y;
     triangle_point.z = 0;   
     triangle.points.push_back(triangle_point);
 
-    triangle_point.x = TRIANGLE_X + TRIANGLE_LENGTH_BOT / 2;
-    triangle_point.y = TRIANGLE_Y - TRIANGLE_LENGTH_SIDE;
+    triangle_point.x = TRIANGLE_X + TRIANGLE_LENGTH_BOT / 2-LINE_X;
+    triangle_point.y = TRIANGLE_Y - TRIANGLE_LENGTH_SIDE-LINE_Y;
     triangle_point.z = 0;   
     triangle.points.push_back(triangle_point);
 
-    triangle_point.x = TRIANGLE_X;
-    triangle_point.y = TRIANGLE_Y;
+    triangle_point.x = TRIANGLE_X-LINE_X;
+    triangle_point.y = TRIANGLE_Y-LINE_Y;
     triangle_point.z = 0;   
     triangle.points.push_back(triangle_point);
     
@@ -247,7 +224,6 @@ int main(int argc, char** argv){
 
     // Add all markers and publish them
     map_marker.markers.push_back(border);
-    map_marker.markers.push_back(cylinder);
     map_marker.markers.push_back(line);
     map_marker.markers.push_back(circle);
     map_marker.markers.push_back(square);
